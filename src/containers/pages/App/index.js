@@ -1,15 +1,19 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
+import Home from '../Home/index.js';
 import Login from '../Login/index.js';
-import Home from '../Dashboard/index.js';
+import Dashboard from '../Dashboard/index.js';
 
 import './App.css';
 
 const App = () => {
+
+
     return <Routes>
-        <Route path='login' element={<Login />} />
-        <Route path='/*' element={<Home />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard' element={<Dashboard />} />
     </Routes>
 }
 
