@@ -3,5 +3,5 @@ export const fetchRefreshToken = () => {
 }
 
 export const fetchUserInfo = () => {
-    return localStorage.getItem('user') === 'undefined' ? localStorage.clear() : JSON.parse(localStorage.getItem('user'));
+    return localStorage.getItem('user') !== 'undefined' ? JSON.parse(localStorage.getItem('user')) : localStorage.clear();
 }

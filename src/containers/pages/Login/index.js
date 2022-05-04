@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { firebaseApp } from '../../../config/firebase/index.js';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
@@ -7,7 +7,7 @@ import { Flex, HStack } from '@chakra-ui/react';
 import { ButtonSignIn } from '../../../components/UI/atoms/Button';
 import { useNavigate } from 'react-router';
 
-
+import { fetchRefreshToken } from '../../../utils/fetchLogin.js';
 const Login = () => {
     const firebaseAuth = getAuth(firebaseApp);
     const provider = new GoogleAuthProvider();
@@ -16,7 +16,14 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-
+    useEffect(() => {
+        const userRefreshToken = fetchRefreshToken();
+        if (!userRefreshToken) {
+            navigate('/login', { replace: true });
+        } else {
+            navigate('/dashboard', { replace: true });
+        }
+    }, []);
 
     const loginHandle = async () => {
         const { user } = await signInWithPopup(firebaseAuth, provider);
