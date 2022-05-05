@@ -4,8 +4,10 @@ import { IoChevronDown } from 'react-icons/io5';
 
 
 
-function SelectionCategory({ categories }) {
-    const [category, setCategory] = useState('Select Category');
+function SelectionCategory({ categories, valueInput }) {
+    const [category, setCategory] = useState(null);
+
+
 
     return (
         <Menu>
@@ -13,7 +15,7 @@ function SelectionCategory({ categories }) {
                 '100%',
                 '45%'
             ]} colorScheme={'blue'} as={Button} rightIcon={<IoChevronDown />}>
-                {category}
+                {!category ? 'Select Category' : category}
             </MenuButton>
             <MenuList zIndex={101} shadow={'x1'}>
                 {categories && categories.map((data) => (
@@ -22,13 +24,16 @@ function SelectionCategory({ categories }) {
                         _hover={{ bg: 'blackAlpha.300' }}
                         fontSize={20}
                         px={4}
-                        onClick={() => setCategory(data.name)}
+                        onClick={() => {
+                            valueInput(data.name);
+                            setCategory(data.name);
+                        }}
                     >
                         {data.iconSrc} <Text fontSize={18} ml={4}>{data.name}</Text>
                     </MenuItem>
                 ))}
             </MenuList>
-        </Menu>
+        </Menu >
     )
 }
 

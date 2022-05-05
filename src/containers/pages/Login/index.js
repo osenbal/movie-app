@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { firebaseApp } from '../../../config/firebase/index.js';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { firebaseAuthentication, firebaseFireStore } from '../../../config/firebase/index.js';
+import { doc, setDoc } from 'firebase/firestore';
 
 import { Flex, HStack } from '@chakra-ui/react';
 import { ButtonSignIn } from '../../../components/UI/atoms/Button';
@@ -9,9 +9,9 @@ import { useNavigate } from 'react-router';
 
 import { fetchRefreshToken } from '../../../utils/fetchLogin.js';
 const Login = () => {
-    const firebaseAuth = getAuth(firebaseApp);
+    const firebaseAuth = firebaseAuthentication;
     const provider = new GoogleAuthProvider();
-    const firebaseDb = getFirestore(firebaseApp);
+    const firebaseDb = firebaseFireStore;
 
 
     const navigate = useNavigate();

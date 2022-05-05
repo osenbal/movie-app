@@ -54,10 +54,11 @@ function Categories({ datas }) {
                 <Flex
                     p={'5%'}
                     flexDir={'column'}
-                    alignItems={navSize === 'small' ? 'center' : "flex-start"}
+                    alignItems={'flex-start'}
                     as="nav"
                 >
                     <IconButton
+                        ml={2}
                         background={'none'}
                         mt={5}
                         _hover={{ background: 'none' }}

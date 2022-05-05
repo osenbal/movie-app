@@ -11,7 +11,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } f
 import SpinnerLoad from '../SpinnerLoad';
 import AlertMsg from '../AlertMsg';
 
-function InputTitle() {
+function InputTitle({ valueInput }) {
 
     const [title, setTitle] = useState('');
 
@@ -26,14 +26,18 @@ function InputTitle() {
             _placeholder={{ color: 'gray.500' }}
             fontSize={20}
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => {
+                setTitle(e.target.value);
+                valueInput(e.target.value);
+            }}
         />
     )
 }
 
-function InputLocation({ colorMode }) {
+function InputLocation({ colorMode, valueInput }) {
 
     const [location, setLocation] = useState('');
+
 
     return (
 
@@ -54,7 +58,10 @@ function InputLocation({ colorMode }) {
                 _placeholder={{ color: 'gray.500' }}
                 fontSize={20}
                 value={location}
-                onChange={(e) => setLocation(e.target.value)}
+                onChange={(e) => {
+                    setLocation(e.target.value);
+                    valueInput(e.target.value);
+                }}
             />
         </InputGroup>
 
@@ -62,7 +69,7 @@ function InputLocation({ colorMode }) {
     )
 }
 
-function InputFileVideo({ colorMode }) {
+function InputFileVideo({ colorMode, valVideoAsset }) {
 
     const [videoAsset, setVideoAsset] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -97,6 +104,7 @@ function InputFileVideo({ colorMode }) {
                 setAlert(true);
                 setAlertStatus('success');
                 setAlertIcon(<IoCheckmark />);
+                valVideoAsset(downloadURL);
                 setAlertMsg('Your video success uploaded');
                 setTimeout(() => {
                     setAlert(false);
@@ -110,6 +118,7 @@ function InputFileVideo({ colorMode }) {
         const deleteRef = ref(storage, videoAsset);
         deleteObject(deleteRef).then(() => {
             setVideoAsset(null);
+            valVideoAsset(videoAsset);
             setAlert(true);
             setAlertStatus('error');
             setAlertIcon(<IoWarning />);
@@ -136,7 +145,7 @@ function InputFileVideo({ colorMode }) {
             <Flex
                 border={'1px'}
                 borderColor={'gray.500'}
-                height={'400px'}
+                height={'500px'}
                 width={'full'}
                 borderRadius={'md'}
                 overflow={'hidden'}

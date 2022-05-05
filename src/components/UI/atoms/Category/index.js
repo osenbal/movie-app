@@ -41,7 +41,7 @@ function Category({ navSize, data, active, bg }) {
                 mt={30}
                 flexDir={'column'}
                 w={'100%'}
-                alignItems={navSize === 'small' ? 'center' : 'flex-start'}
+                alignItems={'flex-start'}
             >
                 <Menu placement='right'>
                     <Link

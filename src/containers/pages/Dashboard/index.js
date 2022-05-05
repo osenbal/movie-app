@@ -8,7 +8,7 @@ import { categories } from '../../../utils/data.js';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react';
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 
-import { Navbar, Feed, Search, Create, VideoDetail } from '../../../components/UI/organisms/index.js';
+import { Navbar, Feeds, Search, Create, VideoDetail } from '../../../components/UI/organisms/index.js';
 import Categories from '../../../components/UI/molecules/Categories/index.js';
 import Setting from '../../../components/UI/molecules/Setting';
 
@@ -47,17 +47,18 @@ const Dashboard = () => {
                 width={'full'}
                 justifyContent={'center'}
                 alignItems={'center'}
+                mb={70}
             >
                 <Routes>
-                    <Route path='/' element={<Feed />} />
-                    <Route path='/category/:categoryId' element={<Feed />} />
+                    <Route path='/' element={<Feeds />} />
+                    <Route path='/category/:categoryId' element={<Feeds />} />
                     <Route path='/create' element={<Create />} />
                     <Route path='/videoDetail/:videoId' element={<VideoDetail />} />
                     <Route path='/search' element={<Search />} />
                 </Routes>
             </Flex>
 
-            <Box width={'95vw'} margin={'0 auto'} left={'0'} right={'0'} position={'fixed'} py={'2'} bottom={'5'} background={bg === 'gray.300' ? 'gray.900' : 'gray.300'} rounded={'full'}>
+            <Box width={'100vw'} margin={'0 auto'} left={'0'} right={'0'} position={'fixed'} py={'2'} bottom={0} background={bg === 'gray.300' ? 'gray.900' : 'gray.300'}>
                 <Setting colorMode={colorMode} actionToggleColorMode={toggleColorMode} bgCreateButton={bg} userImage={user?.photoURL} />
             </Box>
         </>
@@ -68,21 +69,20 @@ const Dashboard = () => {
 
 
                 <Flex
-                    gap={4}
-
+                    gap={16}
+                    alignItems={'start'}
                 >
                     <Categories datas={categories} />
 
                     <Flex
                         width={'full'}
-                        justifyContent={'flex-end'}
-                        justifySelf={'center'}
-                        alignItems={'center'}
+                        mt={8}
+                        mr={8}
                     >
 
                         <Routes>
-                            <Route path='/' element={<Feed />} />
-                            <Route path='/category/:categoryId' element={<Feed />} />
+                            <Route path='/' element={<Feeds />} />
+                            <Route path='/category/:categoryId' element={<Feeds />} />
                             <Route path='/create' element={<Create />} />
                             <Route path='/videoDetail/:videoId' element={<VideoDetail />} />
                             <Route path='/search' element={<Search />} />

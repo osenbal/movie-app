@@ -1,0 +1,34 @@
+.notranslate {
+    -ms-overflow-style: none !important;
+    /* IE and Edge */
+    scrollbar-width: none !important;
+    /* Firefox */
+    border: 1px solid gray;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.public-DraftEditorPlaceholder-root {
+    padding: 8px 0 0 8px !important;
+}
+
+.notranslate::-webkit-scrollbar {
+    display: none !important;
+}
+
+.editorClassName {
+    width: 100%;
+    padding-bottom: 90px;
+}
+
+.rdw-editor-toolbar {
+    background: rgba(218, 218, 218, 0.3) !important;
+}
+
+.rdw-dropdown-selectedtext * {
+    color: #222;
+}
+
+.rdw-dropdown-optionwrapper * {
+    color: #222;
+}
