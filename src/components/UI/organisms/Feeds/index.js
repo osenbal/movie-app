@@ -5,6 +5,7 @@ import { fetchDataFeeds } from '../../../../utils/fetchData';
 import { SimpleGrid, Box, Flex } from '@chakra-ui/react';
 
 import SpinnerLoad from '../../atoms/SpinnerLoad/';
+import VideoItem from '../../molecules/VideoItem';
 
 function Feeds() {
     const [feeds, setFeeds] = useState(null);
@@ -36,13 +37,8 @@ function Feeds() {
                 <SpinnerLoad message={'Loading..'} />
             </Flex>) : (
 
-            <SimpleGrid minChildWidth='120px' spacing='16px' width={'full'}>
-                <Box bg='tomato' height='80px'></Box>
-                <Box bg='tomato' height='80px'></Box>
-                <Box bg='tomato' height='80px'></Box>
-                <Box bg='tomato' height='80px'></Box>
-                <Box bg='tomato' height='80px'></Box>
-                <Box bg='tomato' height='80px'></Box>
+            <SimpleGrid spacing='16px' width={'full'} justifyContent={{ sm: 'center', md: 'start' }} columns={{ sm: 2, md: 3, lg: 4 }}>
+                {feeds && feeds.map((data) => <VideoItem key={data.id} data={data} />)}
             </SimpleGrid>
         )
     )
