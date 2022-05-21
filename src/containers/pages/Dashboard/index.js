@@ -8,7 +8,7 @@ import { categories } from '../../../utils/data.js';
 import { Flex, Box, useMediaQuery } from '@chakra-ui/react';
 import { useColorMode, useColorModeValue } from '@chakra-ui/color-mode';
 
-import { Navbar, Feeds, Search, Create, VideoDetail } from '../../../components/UI/organisms/index.js';
+import { Navbar, Feeds, Search, Create, VideoDetail, UserProfile } from '../../../components/UI/organisms/index.js';
 import Categories from '../../../components/UI/molecules/Categories/index.js';
 import Setting from '../../../components/UI/molecules/Setting';
 
@@ -55,6 +55,7 @@ const Dashboard = () => {
                     <Route path='/create' element={<Create />} />
                     <Route path='/videoDetail/:videoId' element={<VideoDetail />} />
                     <Route path='/search' element={<Search />} />
+                    <Route path='/user/:userId' element={<UserProfile />} />
                 </Routes>
             </Flex>
 
@@ -86,6 +87,7 @@ const Dashboard = () => {
                             <Route path='/create' element={<Create />} />
                             <Route path='/videoDetail/:videoId' element={<VideoDetail />} />
                             <Route path='/search' element={<Search />} />
+                            <Route path='/user/:userId' element={<UserProfile />} />
                         </Routes>
                     </Flex>
                 </Flex>
