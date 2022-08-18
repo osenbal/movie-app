@@ -14,7 +14,7 @@ import logoDark from '../../../../assets/img/logos/logo_dark.png'
 function Navbar({ user }) {
     const [isMobile] = useMediaQuery("(max-width: 768px)");
 
-    const { colorMode, toggleColorMode } = useColorMode()
+    const { colorMode, toggleColorMode } = useColorMode();
     const bg = useColorModeValue("gray.600", "gray.300");
     return (
         isMobile ? <Flex
